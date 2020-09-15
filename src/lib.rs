@@ -38,6 +38,12 @@ impl BufRand {
     }
 
     /// returns a random boolean from the buffer of this `BufRand`
+    /// ```
+    /// use buf_rand::BufRand;
+    /// 
+    /// let mut rand = BufRand::new(Box::new(rand::thread_rng()));
+    /// rand.next_bool();
+    /// ```
     pub fn next_bool(&mut self) -> bool {
         if self.shift_counter >= 64 {
             self.bit_buf = self.next_u64();
@@ -50,22 +56,35 @@ impl BufRand {
     }
 
     /// randomizes the capitalization of a char
-    /// returns `None` in case the changed character is empty
-    pub fn rand_char_case(&mut self, c: &char) -> Option<char> {
+    /// this returns a `String` since some chars may result in multiple when the case is changed
+    /// such as this
+    /// ```
+    /// //example of character turning into multiple
+    /// assert_eq!('ß'.to_uppercase().to_string(), "SS");
+    /// use buf_rand::BufRand;
+    /// 
+    /// let mut rand = BufRand::new(Box::new(rand::thread_rng()));
+    /// rand.rand_char_case(&'E');
+    /// ```
+    pub fn rand_char_case(&mut self, c: &char) -> String {
         if self.next_bool() {
             c.to_uppercase().to_string()
         } else {
             c.to_lowercase().to_string()
         }
-        .chars()
-        .next()
     }
 
     /// randomizes the capitalization of every character in the string
+    /// ```
+    /// use buf_rand::BufRand;
+    /// 
+    /// let mut rand = BufRand::new(Box::new(rand::thread_rng()));
+    /// rand.rand_string_case("hello world!");
+    /// ```
     pub fn rand_string_case(&mut self, s: &str) -> String {
         s.chars()
             .into_iter()
-            .map(|c| self.rand_char_case(&c).unwrap())
+            .map(|c| self.rand_char_case(&c))
             .collect()
     }
 }
