@@ -6,7 +6,6 @@ edition = "2018"
 description = "this crate contains a buffered randomizer for creating random booleans efficiently"
 readme = "README.md"
 repository = "https://github.com/lordmzte/buf-rand.git"
-license-file = "LICENSE"
 license = "GPL-3.0-or-later"
 keywords = ["random", "boolean", "buffer", "rng"]
 categories = ["caching"]
