@@ -41,7 +41,7 @@ impl<R: RngCore> BufRand<R> {
     /// ```
     /// use buf_rand::BufRand;
     /// 
-    /// let mut rand = BufRand::new(Box::new(rand::thread_rng()));
+    /// let mut rand = BufRand::new(rand::thread_rng());
     /// rand.next_bool();
     /// ```
     pub fn next_bool(&mut self) -> bool {
@@ -63,7 +63,7 @@ impl<R: RngCore> BufRand<R> {
     /// assert_eq!('ß'.to_uppercase().to_string(), "SS");
     /// use buf_rand::BufRand;
     /// 
-    /// let mut rand = BufRand::new(Box::new(rand::thread_rng()));
+    /// let mut rand = BufRand::new(rand::thread_rng());
     /// rand.rand_char_case(&'E');
     /// ```
     pub fn rand_char_case(&mut self, c: &char) -> String {
@@ -78,7 +78,7 @@ impl<R: RngCore> BufRand<R> {
     /// ```
     /// use buf_rand::BufRand;
     /// 
-    /// let mut rand = BufRand::new(Box::new(rand::thread_rng()));
+    /// let mut rand = BufRand::new(rand::thread_rng());
     /// rand.rand_string_case("hello world!");
     /// ```
     pub fn rand_string_case(&mut self, s: &str) -> String {
