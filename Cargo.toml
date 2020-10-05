@@ -1,6 +1,6 @@
 [package]
 name = "buf-rand"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["LordMZTE <lord@mzte.de>"]
 edition = "2018"
 description = "this crate contains a buffered randomizer for creating random booleans efficiently"

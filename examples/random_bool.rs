@@ -1,6 +1,6 @@
 use buf_rand::BufRand;
 
 fn main() {
-    let mut rand = BufRand::new(Box::new(rand::thread_rng()));
+    let mut rand = BufRand::new(rand::thread_rng());
     println!("{}", rand.next_bool());
 }
